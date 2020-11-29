@@ -5,18 +5,12 @@ const postRoutes = require('./routes/post')
 const morgan = require('morgan')
 
 
-const myMiddleware = (req,res, next)=>{
-    console.log("middleware connected!!!");
-    next();
-}
-
 //routes
-app.get("/", postRoutes.getPost);
+//app.get("/", postRoutes.getPost);
 
 //middleware
 app.use(morgan('dev'));
-app.use(myMiddleware)
-
+app.use("/", postRoutes)
 //
 app.listen(port, ()=>{
     console.log("Server starting");
