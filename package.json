@@ -1,0 +1,24 @@
+{
+  "name": "socialapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon socialApp.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/workTask/socialApp.git"
+  },
+  "author": "Frantsuh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/workTask/socialApp/issues"
+  },
+  "homepage": "https://github.com/workTask/socialApp#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.6"
+  }
+}
