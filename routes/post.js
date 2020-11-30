@@ -7,6 +7,6 @@ const router = express.Router();
  //   res.send("Home page")
 //};
 
-router.get("/",postController.getPosts);
+router.get("/", postController.getPosts);
 
 module.exports = router;

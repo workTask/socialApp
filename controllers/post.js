@@ -1,3 +1,6 @@
 exports.getPosts = (req,res)=>{
-   res.send("Home page")
+   res.json(
+      {
+         posts: [{ title: "First post" },{ title: "Second post" }]
+      });
 };
