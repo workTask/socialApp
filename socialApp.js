@@ -1,8 +1,11 @@
 const express = require('express')
 const app = express();
-const port = 8089;
+
 const postRoutes = require('./routes/post')
 const morgan = require('morgan')
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 
 //routes
@@ -12,6 +15,6 @@ const morgan = require('morgan')
 app.use(morgan('dev'));
 app.use("/", postRoutes)
 //
-app.listen(port, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log("Server starting");
 })
