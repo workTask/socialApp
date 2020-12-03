@@ -10,12 +10,7 @@ exports.createPost = (req,res)=>{
    const post = new Post(req.body);
    //console.log("creating POST:", post)
 
-   post.save((err, result)=> {
-      if (err){
-         return res.status(400).json({
-            eror:err
-         });
-      }
+   post.save().then(result=>{
       res.status(200).json({
          post:result
       });
