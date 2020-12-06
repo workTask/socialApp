@@ -1,16 +1,16 @@
 const mongoose = require('mongoose')
-const uuidv1 = require('uuid/v1')
+const uuidv1 = require('uuidv1')
 const crypto = require('crypto')
 
 const userSchema = new mongoose.Schema({
     name:{
         type: String,
-        trim: ture,
+        trim: true,
         required: true,
     },
     email:{
         type: String,
-        trim: ture,
+        trim: true,
         required: true,
     },
     hashed_password:{
@@ -28,7 +28,7 @@ const userSchema = new mongoose.Schema({
 //virtual field
 userSchema.virtual('password')
     .set(function(password){
-        this.password = password
+        this._password = password
         // generate s timestamp
         this.salt = uuidv1()
         // ecrypt password

@@ -7,6 +7,7 @@ const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const exspressValidator = require('express-validator');
+const authRoutes = require('./routes/auth')
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(exspressValidator());
 app.use("/", postRoutes)
+app.use("/", authRoutes)
 //
 app.listen(process.env.PORT||3001, ()=>{
     console.log("Server starting");
