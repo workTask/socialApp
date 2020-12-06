@@ -6,6 +6,7 @@ const morgan = require('morgan');
 const dotenv = require('dotenv');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const exspressValidator = require('express-validator');
 const authRoutes = require('./routes/auth')
 
@@ -24,6 +25,7 @@ mongoose.connection.on('error', err => {console.log(` DB conection error: ${err.
 //middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(cookieParser());
 app.use(exspressValidator());
 app.use("/", postRoutes)
 app.use("/", authRoutes)
