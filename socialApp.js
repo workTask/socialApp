@@ -1,16 +1,16 @@
 const express = require('express');
 const app = express();
-
-const postRoutes = require('./routes/post');
-const morgan = require('morgan');
 const dotenv = require('dotenv');
+const morgan = require('morgan');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const exspressValidator = require('express-validator');
+dotenv.config();
+const postRoutes = require('./routes/post');
 const authRoutes = require('./routes/auth')
 
-dotenv.config();
+
 
 //DB
 mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true }).then(()=>console.log('DB connected'))
