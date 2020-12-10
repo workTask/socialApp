@@ -18,10 +18,6 @@ mongoose.connection.on('error', err => {console.log(` DB conection error: ${err.
 });
 //
 
-//routes
-//app.get("/", postRoutes.getPost);
-//
-
 //middleware
 app.use(morgan('dev'));
 app.use(bodyParser.json());
