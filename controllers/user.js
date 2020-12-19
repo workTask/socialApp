@@ -12,3 +12,10 @@ exports.userById = (req,res,next,id)=>{
         next()
     })
 }
+
+exports.hasAuthorization = (res,req,next)=>{
+    const authorized = req.profile && req.auth && req.profile._id === req.auth._id;
+    if(!authorized00){
+        return res.status(403).json({error:"Користувач не авторизований, щоб виконувати цю дію"});
+    }
+}
