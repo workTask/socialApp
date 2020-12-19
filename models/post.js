@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {ObjectID} = mongoose.Schema;
 
 const postSchema = new mongoose.Schema({
     title:{
@@ -11,7 +12,20 @@ const postSchema = new mongoose.Schema({
     body:{
         type: String,
         required: true,
+    },
+    photo:{
+        data: Buffer,
+        contenType: String
+    },
+    postedBy:{
+        type: ObjectID,
+        ref: 'User'
+    },
+    created:{
+        type: Date,
+        default:Date.now
     }
+
 });
 
 module.exports = mongoose.model("Post", postSchema);
