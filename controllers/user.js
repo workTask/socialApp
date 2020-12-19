@@ -50,15 +50,4 @@ exports.allUsers = (req,res)=>{
     });
  }
  
- exports.deleteUser = (req,res) => { 
-     let user = req.profile;
-     user.remove( (err, user) => {
-         if(err){
-             return res.status(400).json({error: err})
-         }
-         user.hashed_password = undefined; // hide hashpassword
-        user.salt = undefined;            // hide salt
-        
-        res.json({message:"User deleted"});
-     })
- }
+ 
