@@ -1,24 +1,24 @@
-const mongoose = require('mongoose')
-const {ObjectID} = mongoose.Schema;
+const mongoose = require('mongoose');
+const {ObjectId} = mongoose.Schema;
 
 const postSchema = new mongoose.Schema({
     title:{
         type: String,
-        required: true,
+        required: true
         //required: "Title is required",
         //minlength: 4,
         //maxlength: 150
     },
     body:{
         type: String,
-        required: true,
+        required: true
     },
     photo:{
         data: Buffer,
         contenType: String
     },
     postedBy:{
-        type: ObjectID,
+        type: ObjectId,
         ref: 'User'
     },
     created:{
@@ -28,4 +28,4 @@ const postSchema = new mongoose.Schema({
 
 });
 
-module.exports = mongoose.model("Post", postSchema);
+module.exports = mongoose.model('Post', postSchema);
