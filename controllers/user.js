@@ -28,3 +28,8 @@ exports.allUsers = (req,res)=>{
         res.json({users});
     }).select("name email update created");
 }
+ exports.getUser = (req, res)=>{
+     req.profile.hashed_password = undefined // hide hashpassword
+     req.profile.salt = undefined            // hide salt
+    return res.json(req.profile);
+ }
