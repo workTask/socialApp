@@ -5,6 +5,7 @@ const fs = require('fs');
 
 exports.getPosts = (req,res)=>{
   const posts = Post.find()
+  .populate("postedBy","_id name")
   .select("_id title body")
   .then(posts => {
      res.status(200).json({posts:posts})
