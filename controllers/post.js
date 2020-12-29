@@ -3,7 +3,11 @@ const formidable = require('formidable');
 const fs = require('fs');
 
 exports.isPoster = (req, res, next)=>{
-   let isPoster = req.post && req.auth && req.post.postedBy._id === req.auth._id;
+   let isPoster = req.post && req.auth && req.post.postedBy._id == req.auth._id;
+   console.log('req.post: ', req.post);
+   console.log('req.auth: ', req.auth);
+   console.log('req.post.postedBy._id: ', req.post.postedBy._id);
+   console.log('req.auth._id: ', req.auth._id);
         if(!isPoster){
             return res.status(403).json({ error: 'Користувач не авторизований'});
         };
