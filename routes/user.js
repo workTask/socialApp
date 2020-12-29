@@ -9,6 +9,6 @@ router.get("/user/:userId", requireSignin, getUser); //
 router.put("/user/:userId", requireSignin, updateUser); // update user data
 router.delete("/user/:userId", requireSignin, deleteUser); // delete user data
 
-router.param("userId",userById);
+router.param("userId", userById);
 
 module.exports = router;
