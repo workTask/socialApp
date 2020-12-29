@@ -6,6 +6,7 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const exspressValidator = require('express-validator');
+fs = require('fs');
 dotenv.config();
 
 // routes
@@ -20,6 +21,16 @@ mongoose.connect(process.env.MONGO_URI, { useUnifiedTopology: true }).then(()=>c
 mongoose.connection.on('error', err => {console.log(` DB conection error: ${err.message}`);
 });
 //
+
+//apiDocs
+app.get('/', (req, res) =>{
+    fs.readFile('docs/apiDocs.json', (err, data) =>{
+        if(err){
+            res.status(400).json({error:err});
+        };
+        res.json(JSON.parse(data));
+    });
+});
 
 //middleware
 app.use(morgan('dev'));
