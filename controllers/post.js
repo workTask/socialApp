@@ -1,5 +1,6 @@
 const Post = require('../models/post');
 const formidable = require('formidable');
+const _ = require('lodash'); //for update post
 const fs = require('fs');
 
 exports.isPoster = (req, res, next)=>{
@@ -67,8 +68,19 @@ exports.createPost = (req,res)=>{
     //  });
   // });
 };
+exports.updatePost = (req, res, next) => {
+   let post = req.post;
+   post = _.extend(post, req.body);
+   post.update = Date.now();
+   post.save( err => {
+       if (err){
+           return res.status(400).json({error:'Ви не авторизовані, щоб виконувати цю дію'});
+       };    
+       res.json(post);
+   });
+}
 
-exports.deletePost = (req,res) => { 
+exports.deletePost = (req, res) => { 
    let post = req.post;
    post.remove( (err, post) => {
        if(err){
@@ -77,6 +89,7 @@ exports.deletePost = (req,res) => {
       res.json({message:"Post deleted"});
    });
   };
+
 
 exports.postsByUser = (req,res) => {
    Post.find({postedBy: req.profile._id})
